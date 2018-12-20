@@ -1,11 +1,11 @@
 version: '3'
 services:
   gitpitch:
-    image: knsit/gitpitch:latest
+    build: full
     environment:
-      - "GP_HOST=192.168.0.2"
-      - "GP_GITLAB_BASE=https://gitlab.com/"
-      - "GP_GITLAB_API=https://gitlab.com/api/v4/"
+      - "GP_APP_SECRET=lalaland"
+      - "GP_GITLAB_BASE=https://git.soton.ac.uk/"
+      - "GP_GITLAB_API=https://git.soton.ac.uk/api/v4/"
       - "GP_GITLAB_AS_DEFAULT=true"
     ports:
       - 9000:9000

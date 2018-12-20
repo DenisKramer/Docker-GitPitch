@@ -13,4 +13,8 @@ if [ ! -f /etc/gitpitch/gitpitch.conf ]; then
 	chmod 440 /gitpitch/conf/gitpitch.conf
 fi
 
+echo "Configuration -----------------------------------------------------------------"
+cat /gitpitch/conf/gitpitch.conf
+echo "-------------------------------------------------------------------------------"
+
 /gitpitch/bin/server -Dconfig.file=/gitpitch/conf/gitpitch.conf

@@ -26,9 +26,14 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.schema-version="1.0" \
       maintainer="sebastian.kurfer@kns-it.de"
 
-ADD https://github.com/hairyhenderson/gomplate/releases/download/$GOMPLATE_VERSION/gomplate_linux-amd64-slim /usr/bin/gomplate
+ADD https://github.com/hairyhenderson/gomplate/releases/download/$GOMPLATE_VERSION/gomplate_linux-amd64 /usr/bin/gomplate
 
 COPY --from=SBTBuild /gitpitch /gitpitch
+
+RUN apt-get update && \
+    apt-get install -y curl gnupg2 && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /src/*.deb
 
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
